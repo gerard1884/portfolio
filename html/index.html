@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alex Bony — Infrastructure to software</title>
+<meta name="description" content="Alex Bony, Toronto. Nine years building from the cable up: networking, Linux, cloud, DevOps, and now software.">
+<meta name="author" content="Alex Bony">
+<meta name="theme-color" content="#101A2E">
+
+<!-- Social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alex Bony — Infrastructure to software">
+<meta property="og:description" content="Nine years building from the cable up: networking, Linux, cloud, DevOps, and now software.">
+<meta property="og:image" content="./images/favicon-192.png">
+
+<!-- Icons -->
+<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="./images/favicon-192.png">
+<link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+<link rel="shortcut icon" href="./images/favicon.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#story">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="mark" href="#top" aria-label="Alex Bony, back to top">
+      <span class="mark__glyph">AB</span>
+      <span class="mark__name">Alex Bony</span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a class="nav__link" href="#story">Story</a>
+      <a class="nav__link" href="#stack">The stack</a>
+      <a class="nav__link" href="#toolkit">Toolkit</a>
+      <a class="nav__link" href="#credentials">Credentials</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="shell hero__grid">
+
+      <div class="portrait">
+        <div class="portrait__ring">
+          <!-- ▼▼▼ EDIT THIS LINE: drop your photo in the images folder and point src at it ▼▼▼ -->
+          <img class="portrait__img" id="portrait" src="./images/mypicture.jpg" alt="Portrait of Alex Bony" width="360" height="360">
+          <!-- ▲▲▲ EDIT THIS LINE ▲▲▲ -->
+          <span class="portrait__fallback" aria-hidden="true">AB</span>
+        </div>
+      </div>
+
+      <div class="intro">
+        <p class="intro__kicker">Toronto, Ontario</p>
+        <h1 class="intro__name">Alex&nbsp;Bony</h1>
+        <p class="intro__line">I started at the help desk and kept climbing. Nine years later I'm writing the software that runs on everything I learned to build underneath it.</p>
+        <div class="intro__actions">
+          <a class="btn btn--solid" href="#story">Read the story</a>
+          <a class="btn btn--ghost" href="#stack">See the stack</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ STORY ============ -->
+  <section class="band" id="story">
+    <div class="shell">
+      <h2 class="h2">Nine years, one long climb</h2>
+      <div class="prose">
+        <p>It began the way a lot of these stories begin: a ticket queue, a headset, and a list of things I did not yet understand. Basic IT support in Toronto. Password resets, printers, the occasional machine that simply refused to cooperate. What stuck with me wasn't the work — it was the feeling of tracing a problem back to its cause and finding out there was a whole layer down there I'd never looked at.</p>
+
+        <p>So I went down a layer. Networking took over my evenings. I learned what was actually happening on the wire, then in the switch, then across the enterprise, and I earned my CCNA and CCNP Enterprise along the way. Switches, firewalls, routing, segmentation — the plumbing everything else quietly depends on. It was the first time a subject didn't run out on me. Every answer opened another question, and I liked that.</p>
+
+        <p>Linux came next, and it came hard. Not the tutorial version — the kernel, the filesystem, the process model, the parts that make you slow down. Kubernetes followed naturally from there, and the CKA gave me a way to prove I understood it under pressure. Then the cloud: AZ-104, AZ-305, and a Terraform Associate, because once you've built infrastructure by hand enough times you start wanting to describe it in a file and let the machine do the rest.</p>
+
+        <p>That's how I landed in DevOps, and it's where the two halves of my career started talking to each other. I built pipelines, shipped containerized workloads into dev and prod, and spent my days between the people writing the code and the systems running it. Working that closely with developers did something I didn't expect: it made me want to write the code myself.</p>
+
+        <p>Python first. Then databases — PostgreSQL, MSSQL, MongoDB — and the front end, HTML, CSS, JavaScript, then the frameworks that sit on top of them. I wanted the foundations to be real rather than borrowed, so I went back to school and earned a Diploma in Computer Programming from Sheridan College to put structure under what I'd been teaching myself.</p>
+
+        <p>I think of all of it as one continuous thing. The support desk taught me to listen to a problem. Networking taught me how things actually connect. Linux and Kubernetes taught me what's really happening when software runs. Cloud and Terraform taught me to build systems you can rebuild. DevOps taught me how software reaches people. Now I'm writing that software, and none of the earlier layers went away — they're the reason I can see the whole path a request takes, from the port it arrives on to the line of code that answers it.</p>
+
+        <p class="prose__close">Software engineering is where I'm headed. It's also just the next layer, and I have no plans to stop climbing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STACK ============ -->
+  <section class="band band--alt" id="stack">
+    <div class="shell">
+      <h2 class="h2">The stack, as I built it</h2>
+      <p class="lede">Read it top-down and it's a résumé. Read it bottom-up and it's the order I learned things in — every layer holding up the one above it.</p>
+
+      <ol class="stack" id="stackList">
+
+        <li class="layer layer--now">
+          <div class="layer__id"><span class="layer__num">L5</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Software</h3>
+              <span class="layer__when"><span class="pulse" aria-hidden="true"></span>2024 — now</span>
+            </div>
+            <p class="layer__text">Writing applications rather than only running them. Python, SQL and relational design, JavaScript across the front end, and the frameworks that tie them together — backed by a formal diploma to make the fundamentals stick.</p>
+            <ul class="chips">
+              <li class="chip">Python</li><li class="chip">JavaScript</li><li class="chip">APIs</li><li class="chip">Data modelling</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer">
+          <div class="layer__id"><span class="layer__num">L4</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Delivery and automation</h3>
+              <span class="layer__when">2022 — 2024</span>
+            </div>
+            <p class="layer__text">DevOps in earnest. Building CI/CD pipelines and shipping containerized workloads into dev and production, sitting close enough to the development teams that their problems became my problems.</p>
+            <ul class="chips">
+              <li class="chip">CI/CD</li><li class="chip">Docker</li><li class="chip">Release engineering</li><li class="chip">Observability</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer">
+          <div class="layer__id"><span class="layer__num">L3</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Cloud and infrastructure as code</h3>
+              <span class="layer__when">2021 — 2022</span>
+            </div>
+            <p class="layer__text">Moving from racks to regions. Designing and running Azure environments, then writing the infrastructure down in Terraform so it could be reviewed, versioned and rebuilt on demand.</p>
+            <ul class="chips">
+              <li class="chip">Azure</li><li class="chip">Terraform</li><li class="chip">Networking in cloud</li><li class="chip">Cost and design trade-offs</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer">
+          <div class="layer__id"><span class="layer__num">L2</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Linux and Kubernetes</h3>
+              <span class="layer__when">2020 — 2021</span>
+            </div>
+            <p class="layer__text">Going deep on the operating system itself — processes, permissions, networking, storage — then onto orchestration, scheduling and cluster operations.</p>
+            <ul class="chips">
+              <li class="chip">Linux administration</li><li class="chip">Kubernetes</li><li class="chip">Bash</li><li class="chip">Containers</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer">
+          <div class="layer__id"><span class="layer__num">L1</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Enterprise networking</h3>
+              <span class="layer__when">2018 — 2020</span>
+            </div>
+            <p class="layer__text">The layer that made everything else make sense. Switching, routing, firewalls and enterprise network design, learned properly and certified twice over.</p>
+            <ul class="chips">
+              <li class="chip">Routing and switching</li><li class="chip">Firewalls</li><li class="chip">Network design</li><li class="chip">Troubleshooting</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="layer">
+          <div class="layer__id"><span class="layer__num">L0</span></div>
+          <div class="layer__body">
+            <div class="layer__head">
+              <h3 class="layer__title">Where it started</h3>
+              <span class="layer__when">2017</span>
+            </div>
+            <p class="layer__text">Frontline IT support. Learning to hear the real problem behind the reported one — still the most useful skill I own.</p>
+            <ul class="chips">
+              <li class="chip">Support</li><li class="chip">Hardware</li><li class="chip">Windows</li><li class="chip">Patience</li>
+            </ul>
+          </div>
+        </li>
+
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ TOOLKIT ============ -->
+  <section class="band" id="toolkit">
+    <div class="shell">
+      <h2 class="h2">What I work with</h2>
+      <div class="grid">
+
+        <div class="col">
+          <h3 class="col__title">Languages and data</h3>
+          <ul class="list">
+            <li>Python</li>
+            <li>JavaScript, HTML, CSS</li>
+            <li>SQL — PostgreSQL, MSSQL</li>
+            <li>MongoDB</li>
+            <li>Bash</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h3 class="col__title">Platform and cloud</h3>
+          <ul class="list">
+            <li>Microsoft Azure</li>
+            <li>Terraform</li>
+            <li>Kubernetes</li>
+            <li>Docker</li>
+            <li>Linux</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h3 class="col__title">Delivery</h3>
+          <ul class="list">
+            <li>CI/CD pipelines</li>
+            <li>Git and code review</li>
+            <li>Containerized deployments</li>
+            <li>Dev and production environments</li>
+            <li>Monitoring and logging</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h3 class="col__title">Networking</h3>
+          <ul class="list">
+            <li>Switching and routing</li>
+            <li>Firewalls</li>
+            <li>Enterprise network design</li>
+            <li>VPN and segmentation</li>
+            <li>Packet-level troubleshooting</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CREDENTIALS ============ -->
+  <section class="band band--alt" id="credentials">
+    <div class="shell">
+      <h2 class="h2">Certifications and education</h2>
+      <div class="creds">
+
+        <article class="cred">
+          <h3 class="cred__name">Diploma in Computer Programming</h3>
+          <p class="cred__org">Sheridan College</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">CKA — Certified Kubernetes Administrator</h3>
+          <p class="cred__org">Cloud Native Computing Foundation</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">AZ-305 — Azure Solutions Architect Expert</h3>
+          <p class="cred__org">Microsoft</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">AZ-104 — Azure Administrator Associate</h3>
+          <p class="cred__org">Microsoft</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">Terraform Associate</h3>
+          <p class="cred__org">HashiCorp</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">CCNP Enterprise</h3>
+          <p class="cred__org">Cisco</p>
+        </article>
+
+        <article class="cred">
+          <h3 class="cred__name">CCNA</h3>
+          <p class="cred__org">Cisco</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer" id="contact">
+  <div class="shell footer__inner">
+    <div class="footer__lead">
+      <h2 class="footer__title">Find me here</h2>
+      <p class="footer__text">Open to software engineering work and to anyone who wants to talk about the layers underneath it.</p>
+    </div>
+
+    <ul class="links">
+      <!-- ▼ Replace the two href values below with your real profile URLs ▼ -->
+      <li>
+        <a class="link" href="https://github.com/your-username" rel="me noopener" target="_blank">
+          <svg class="link__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.4 7.4 0 0 1 2-.27c.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+          <span class="link__label">GitHub</span>
+          <span class="link__handle">github.com/your-username</span>
+        </a>
+      </li>
+      <li>
+        <a class="link" href="https://www.linkedin.com/in/your-profile" rel="me noopener" target="_blank">
+          <svg class="link__icon" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M3.6 1.6a2 2 0 1 1 0 4 2 2 0 0 1 0-4ZM1.9 14.4V6.3h3.4v8.1H1.9Zm5.5 0V6.3h3.3v1.1h.05c.46-.83 1.58-1.3 2.6-1.3 2.35 0 2.8 1.45 2.8 3.4v4.9h-3.4v-4.3c0-1.03-.02-2.35-1.45-2.35-1.45 0-1.67 1.12-1.67 2.28v4.37H7.4Z"/></svg>
+          <span class="link__label">LinkedIn</span>
+          <span class="link__handle">linkedin.com/in/your-profile</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="footer__meta">© <span id="year">2026</span> Alex Bony. Built and shipped by hand in Toronto.</p>
+  </div>
+</footer>
+
+<script src="./js/main.js" defer></script>
+</body>
+</html>

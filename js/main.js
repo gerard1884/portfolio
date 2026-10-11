@@ -1,77 +1,101 @@
-/* ============================================================
-   Alex Bony — portfolio behaviour
-   Small and dependency-free. Everything degrades gracefully.
-   ============================================================ */
-
+/* Alex Bony: portfolio
+   No dependencies. Handles: rack selector, mobile menu, skills marquee, footer year. */
 (function () {
-  "use strict";
+  'use strict';
 
-  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var root = document.documentElement;
+  root.classList.add('js');
 
-  /* ---------- current year in the footer ---------- */
-  var year = document.getElementById("year");
-  if (year) year.textContent = new Date().getFullYear();
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ---------- portrait: show initials until a photo exists ---------- */
-  var portrait = document.getElementById("portrait");
-  if (portrait) {
-    var ring = portrait.closest(".portrait__ring");
-    var markEmpty = function () { if (ring) ring.classList.add("is-empty"); };
+  /* ---------- Footer year ---------- */
+  var yearEl = document.querySelector('[data-year]');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    portrait.addEventListener("error", markEmpty);
-    // covers a cached failure that fired before this script ran
-    if (portrait.complete && portrait.naturalWidth === 0) markEmpty();
-  }
-
-  /* ---------- hairline under the top bar once the page scrolls ---------- */
-  var topbar = document.querySelector(".topbar");
-  var onScroll = function () {
-    if (topbar) topbar.classList.toggle("is-stuck", window.scrollY > 8);
-  };
-  onScroll();
-  window.addEventListener("scroll", onScroll, { passive: true });
-
-  /* ---------- the one orchestrated moment: the stack settles bottom-up ---------- */
-  var stack = document.getElementById("stackList");
-  if (stack && !reduceMotion && "IntersectionObserver" in window) {
-    stack.classList.add("is-armed");
-
-    var layers = Array.prototype.slice.call(stack.querySelectorAll(".layer"));
-    layers.forEach(function (layer, i) {
-      // last item in the DOM is the earliest layer, so it moves first
-      layer.style.transitionDelay = (layers.length - 1 - i) * 70 + "ms";
+  /* ---------- Mobile menu ---------- */
+  var toggle = document.querySelector('.nav-toggle');
+  var nav = document.getElementById('site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', function () {
+      var open = nav.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
     });
-
-    var stackWatcher = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        stack.classList.add("is-revealed");
-        stackWatcher.disconnect();
-      });
-    }, { threshold: 0.12 });
-
-    stackWatcher.observe(stack);
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        nav.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
   }
 
-  /* ---------- highlight the section you are reading ---------- */
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll(".nav__link"));
-  var sections = navLinks
-    .map(function (link) { return document.querySelector(link.getAttribute("href")); })
-    .filter(Boolean);
+  /* ---------- Rack selector ---------- */
+  var units = Array.prototype.slice.call(document.querySelectorAll('.unit'));
+  var readout = document.getElementById('readout');
 
-  if (sections.length && "IntersectionObserver" in window) {
-    var setActive = function (id) {
-      navLinks.forEach(function (link) {
-        link.classList.toggle("is-active", link.getAttribute("href") === "#" + id);
+  if (units.length && readout) {
+    var rUnit = readout.querySelector('.readout__unit');
+    var rTitle = readout.querySelector('.readout__title');
+    var rText = readout.querySelector('.readout__text');
+    var rTags = readout.querySelector('.readout__tags');
+    var rLink = readout.querySelector('.readout__link');
+
+    var select = function (unit) {
+      units.forEach(function (u) {
+        u.setAttribute('aria-pressed', u === unit ? 'true' : 'false');
+      });
+
+      rUnit.textContent = unit.dataset.unit;
+      rTitle.textContent = unit.dataset.title;
+      rText.textContent = unit.dataset.text;
+      rLink.setAttribute('href', '#' + unit.dataset.target);
+
+      rTags.textContent = '';
+      (unit.dataset.tags || '').split(',').forEach(function (tag) {
+        var t = tag.trim();
+        if (!t) return;
+        var li = document.createElement('li');
+        li.textContent = t;
+        rTags.appendChild(li);
       });
     };
 
-    var sectionWatcher = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) setActive(entry.target.id);
-      });
-    }, { rootMargin: "-45% 0px -50% 0px" });
+    units.forEach(function (unit) {
+      unit.addEventListener('click', function () { select(unit); });
+    });
 
-    sections.forEach(function (section) { sectionWatcher.observe(section); });
+    // Arrow keys move between units.
+    var list = document.querySelector('.rack__units');
+    list.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp') return;
+      var i = units.indexOf(document.activeElement);
+      if (i === -1) return;
+      e.preventDefault();
+      var next = units[(i + (e.key === 'ArrowDown' ? 1 : -1) + units.length) % units.length];
+      next.focus();
+      select(next);
+    });
+
+    var initial = units.filter(function (u) { return u.getAttribute('aria-pressed') === 'true'; })[0] || units[0];
+    select(initial);
+  }
+
+  /* ---------- Skills marquee ---------- */
+  if (!reduceMotion) {
+    document.querySelectorAll('[data-marquee]').forEach(function (marquee) {
+      var track = marquee.querySelector('.marquee__track');
+      var set = marquee.querySelector('.marquee__set');
+      if (!track || !set) return;
+      var clone = set.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      track.appendChild(clone);
+      marquee.classList.add('is-live');
+    });
   }
 })();

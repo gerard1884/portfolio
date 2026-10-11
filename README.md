@@ -1,90 +1,62 @@
-# Alex Bony — Portfolio
+# Alex Bony: portfolio
 
-A static, dependency-free portfolio site. No build step, no framework, no npm install. Just open `index.html`.
+A static portfolio site: plain HTML, CSS and JavaScript. No build step, no dependencies.
 
 ```
 .
-├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── main.js
-├── images/
-│   ├── favicon.jpg          ← your icon (original)
-│   ├── favicon-32.png
-│   ├── favicon-192.png
-│   └── apple-touch-icon.png
-├── vercel.json
-├── .gitignore
-└── README.md
+├── index.html        # all content lives here
+├── css/style.css     # design tokens, layout, dark mode
+├── js/main.js        # rack selector, mobile menu, skills marquee
+├── images/           # favicon (GB, black on white), app icons, social preview
+├── vercel.json       # security headers + caching
+└── robots.txt
 ```
 
-## Three things to edit
+## Edit your links
 
-### 1. Your photo — `index.html`, **line 56**
+Open `index.html`, search for `EDIT HERE`, and replace the three `href` values
+and the visible handle text for GitHub, Substack and LinkedIn.
 
-```html
-<img class="portrait__img" id="portrait" src="./images/mypicture.jpg" alt="Portrait of Alex Bony" width="360" height="360">
-```
+## Other things you may want to change
 
-Drop your photo into `images/` and make the `src` match the filename exactly, including the extension. If your file is `mypicture.png`, change `.jpg` to `.png`.
+- **Skills:** the two scrolling rows live under `id="skills"` in `index.html`.
+  Delete anything you'd rather not list.
+- **Social preview:** after your first deploy, change `og:image` in the `<head>`
+  to the full URL, e.g. `https://your-site.vercel.app/images/og-image.png`.
+- **Colours:** every colour is a variable at the top of `css/style.css`.
 
-Until the file exists, the circle shows your initials instead of a broken image, so the page never looks unfinished. Square photos crop best; anything else is centre-cropped to a circle.
-
-### 2. Your links — `index.html`, **lines 305 and 312**
-
-Replace the two placeholder URLs with your real profiles. The visible handle text sits just below each one, on **lines 308 and 315** — update those to match.
-
-```html
-<a class="link" href="https://github.com/your-username" ...>
-<a class="link" href="https://www.linkedin.com/in/your-profile" ...>
-```
-
-### 3. Your dates — `index.html`, the `<!-- STACK -->` section
-
-The year ranges in the timeline (2017 through now) are estimates based on a nine-year career. Search for `layer__when` and adjust each one to your real dates.
-
-There is deliberately no email address anywhere on the page — no `mailto:`, no plain-text address, nothing for a scraper to find.
-
-## Run it locally
-
-Open `index.html` in a browser, or serve it if you prefer real paths:
+## Preview locally
 
 ```bash
 python3 -m http.server 8000
-# then visit http://localhost:8000
+# open http://localhost:8000
 ```
 
-## Deploy to Vercel (free tier)
+## Push to GitHub
 
-### Push to GitHub first
+Git commits carry an email address, and GitHub shows it publicly. To keep your real
+email private, turn on "Keep my email addresses private" in GitHub > Settings > Emails,
+then use the `@users.noreply.github.com` address it gives you:
 
 ```bash
-cd alex-bony-portfolio
 git init
+git config user.name "Alex Bony"
+git config user.email "YOUR-ID+YOUR-USERNAME@users.noreply.github.com"
 git add .
-git commit -m "Portfolio site"
+git commit -m "Initial portfolio"
 git branch -M main
-git remote add origin https://github.com/your-username/your-repo.git
+git remote add origin https://github.com/YOUR-USERNAME/YOUR-REPO.git
 git push -u origin main
 ```
 
-### Then connect it
+## Deploy on Vercel (free Hobby tier)
 
-1. Go to [vercel.com/new](https://vercel.com/new) and import the repo.
-2. Framework preset: **Other**.
-3. Build command: leave **empty**.
-4. Output directory: leave **empty** (the repo root is the site).
-5. Deploy.
+1. Go to vercel.com and sign in with GitHub.
+2. **Add New > Project**, pick this repo.
+3. Framework Preset: **Other**. Leave Build Command and Output Directory empty.
+4. Deploy. Every push to `main` redeploys automatically.
 
-Every push to `main` redeploys automatically. Pull requests get their own preview URL.
+## Privacy note
 
-### Custom domain
-
-Project → Settings → Domains → add your domain, then point the DNS records Vercel gives you. Free on the hobby tier, HTTPS included.
-
-## Notes
-
-- Fonts load from Google Fonts (Bricolage Grotesque and Newsreader). To go fully self-hosted, download the `.woff2` files into a `fonts/` folder, add `@font-face` rules to `styles.css`, and remove the `<link>` tags from `index.html`.
-- Colours live as CSS custom properties at the top of `styles.css`. Change `--signal` to re-accent the whole site in one edit.
-- Motion respects `prefers-reduced-motion`, focus states are visible for keyboard users, and the layout holds down to small phones.
+There is deliberately no email address, contact form or `mailto:` link anywhere on the
+site, so there is nothing for scrapers to harvest.
